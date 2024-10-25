@@ -8,22 +8,22 @@ metadata:
     component: mysql
     project: expense
     tier: db
-  spec:
-    replicas: 2
-    selector:
-      matchLabels:
-        component: mysql
-        project: expense
-        tier: db
-  # pod definition
-template:
-  metadata:
-    labels:
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
       component: mysql
       project: expense
       tier: db
-      extra-key: exta-value
-  spec:
-    containers:
-    - name: mysql
-      image: joindevops/mysql:v1.0
+  # pod definition
+# pod definition
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: expense
+        tier: db
+    spec:
+      containers:
+      - name: mysql
+        image: joindevops/mysql:v1.0
