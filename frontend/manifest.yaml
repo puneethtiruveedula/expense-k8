@@ -35,18 +35,18 @@ spec:
       containers:
       - name: frontend
         image: joindevops/frontend:v1.0
-      volumeMounts:
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
+      volumes:
       - name: nginx-conf
-        mountPath: /etc/nginx/nginx.conf
-        subPath: nginx.conf
-        readOnly: true
-    volumes:
-    - name: nginx-conf
-      configMap:
-        name: frontend
-        items:
-        - key: nginx.conf
-          path: nginx.conf
+        configMap:
+          name: frontend
+          items:
+          - key: nginx.conf
+            path: nginx.conf
 
 
 ---
